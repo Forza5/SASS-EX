@@ -1,3 +1,4 @@
+//변수를 생성할 때: '$'사용
 $bgColor: red;
 $font-h1: 28px;
 $valid-sides: left, center, right; //(1, 2, 3), (-3, -2, -1)
@@ -17,3 +18,49 @@ p {
     color: $spanColor;
     text-align: nth($valid-sides, 2);
 }
+
+/*
+    - css에서 변수를 사용하는 기준
+    
+    -> 값이 두 번 이상 반복될때
+    = 값을 기억하지 않고 변수명만을 가지고 style할 수 있다.
+    
+    -> 기존의 값을 다른 값으로 변경해야할 경우, 변수의 값만 변경하면 되기 때문에
+    값이 수정될 가능성이 있다면 변수 생성을 고려
+*/
+
+//변수 type들
+/*
+    1. numbers: 1, 2, 20px, 1rem, 2em ...
+    2. strings: "./images/sass.svg", bold, left, right, uppercase ...
+    3. colors: green, red, #fff, rgba(255,255,255) ...
+    4. booleans: true, false
+    5. null
+    6. lists
+        $font-size : 10px 12px 16px; //폰트사이즈 리스트
+        $image-file : photo_01, photo_02, photo_03 //이미지 파일명 리스트
+
+        //아래와 같은 형태로 사용(순회도 가능)
+        list.nth(10px 12px 16px, 2); // 12px
+        list.nth([line1, line2, line3], -1); // line3
+
+        // 아래와 같이 사용합니다.
+        .test1 {
+            font-size: nth($list: $font-size, $n: 2);
+        }
+
+        .test2 {
+            font-size: nth($font-size, 2);
+        }
+        
+        7. maps
+            $font-weights: ("regular": 400, "medium": 500, "bold": 700); //글자 굵기 리스트
+
+            //아래와 같은 형태로 사용
+            map.get($font-weights, "medium"); // 500
+            map.get($font-weights, "extra-bold"); // null
+
+            .test1 {
+                font-weight: map-get($font-weights, "medium"); // 500
+            }
+*/
